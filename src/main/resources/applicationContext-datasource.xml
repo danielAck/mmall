@@ -9,6 +9,8 @@
      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
      http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
+    <!-- spring-mybatis.xml  -->
+
     <!-- 扫描指定包下的 *所有* 注解 包括(@Component @Service @Controller等)-->
     <context:component-scan base-package="com.mmall" annotation-config="true"/>
 
@@ -25,6 +27,7 @@
     </bean>
 
 
+    <!-- spring-service.xml  -->
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="${db.driverClassName}"/>
