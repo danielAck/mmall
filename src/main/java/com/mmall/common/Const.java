@@ -17,6 +17,14 @@ public class Const {
 
     public static final String USERNAME = "username";
 
+    public interface Cart{
+        int CHECKED = 1;//即购物车为选中状态
+        int UN_CHECKED = 0;//购物车中未选中状态
+
+        String LIMIT_NUM_FAIL = "LIMIT_NUM_FAIL";
+        String LIMIT_NUM_SUCCESS = "LIMIT_NUM_SUCCESS";
+    }
+
     public interface productListOrderBy{
         //Set集合的 contains方法时间复杂度是 O(1)，而 List集合 contain方法时间复杂度是 O(n)
         Set<String> PRICE_ASC_DESC = Sets.newHashSet("price_desc","price_asc");
