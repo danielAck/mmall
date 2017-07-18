@@ -1,4 +1,4 @@
-<%@page language="java" contentType="text/html; UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <body>
 <h2>Hello World!</h2>
@@ -13,7 +13,7 @@ springMVC上传文件
 富文本上传文件
 <form name="form2" action="/manage/product/richtext_img_upload.do" method="post" enctype="multipart/form-data">
     <input type="file" name ="upload_file"/>
-    <input type="submit" value="springMVC上传文件"/>
+    <input type="submit" value="富文本上传文件"/>
 </form>
 
 </body>
