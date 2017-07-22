@@ -30,17 +30,34 @@ public class FTPUtil {
         this.port = prot;
         this.user = user;
         this.pwd = pwd;
+}
+
+    //连接服务器
+    private  boolean connectServer(String ip,int port,String user,String pwd){
+        boolean isSuccess = false;
+        ftpClient = new FTPClient();
+        try {
+            ftpClient.connect(ip);
+            isSuccess =  ftpClient.login(user,pwd);
+        } catch (IOException e) {
+            logger.error("连接服务器异常",e);
+        }
+        return isSuccess;
     }
+
+    //外部上传文件
     public static boolean uploadFile(List<File> fileList) throws IOException {
         FTPUtil ftpUtil = new FTPUtil(ftpIp,21,ftpUser,ftpPass);
         boolean result = ftpUtil.uploadFile("img",fileList);
         logger.info("开始连接FTP服务器，结束上传，上传结果:{}",result);
         return result;
     }
+
+    //内部调用上传文件接口
     private boolean uploadFile(String remotePath,List<File> fileList) throws IOException {
         boolean uploaded = true;
         FileInputStream fis = null;
-        //链接FTP服务器器
+        //连接FTP服务器
         if(connectServer(this.ip,this.port,this.user,this.pwd)){
             try {
                 ftpClient.changeWorkingDirectory(remotePath);
@@ -60,18 +77,6 @@ public class FTPUtil {
             }
         }
         return uploaded;
-    }
-    private  boolean connectServer(String ip,int port,String user,String pwd){
-
-        boolean isSuccess = false;
-        ftpClient = new FTPClient();
-        try {
-            ftpClient.connect(ip);
-            isSuccess =  ftpClient.login(user,pwd);
-        } catch (IOException e) {
-            logger.error("连接服务器异常",e);
-        }
-        return isSuccess;
     }
 
     public static String getFtpIp() {

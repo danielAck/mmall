@@ -32,13 +32,15 @@
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <!-- 通过 .xml 文件将 web 容器与 spring 容器整合 -->
+        <!-- 将 web 容器与 spring 容器整合 -->
         <param-value>
             classpath:applicationContext.xml
         </param-value>
     </context-param>
+
 
     <servlet>
         <servlet-name>dispatcher</servlet-name>
@@ -54,8 +56,6 @@
         <!-- >= 0：容器启动时自动初始化servlet -->
         <load-on-startup>1</load-on-startup>
     </servlet>
-
-
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>*.do</url-pattern>
